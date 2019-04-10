@@ -1,4 +1,4 @@
 # Dating-App-CSCI-2270-
 in C++11
 I am very Gay
-You suck
+Okay but I don't like where this is going
