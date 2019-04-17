@@ -1,0 +1,18 @@
+In file included from D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\driver.cpp:4:0:
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:16:12: error: 'vertex' was not declared in this scope
+     vector<vertex*> Edges; //stores edges to adjacent vertices
+            ^~~~~~
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:16:19: error: template argument 1 is invalid
+     vector<vertex*> Edges; //stores edges to adjacent vertices
+                   ^
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:16:19: error: template argument 2 is invalid
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:18:5: error: 'Person' does not name a type
+     Person p1;//person object
+     ^~~~~~
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:34:12: error: 'vertex' was not declared in this scope
+     vector<vertex> vertices; //stores vertices
+            ^~~~~~
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:34:18: error: template argument 1 is invalid
+     vector<vertex> vertices; //stores vertices
+                  ^
+D:\CU School\Spring 2019\CSCI 2270\Dating-App-CSCI-2270-\connectivityGraph.hpp:34:18: error: template argument 2 is invalid
