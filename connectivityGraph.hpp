@@ -18,6 +18,7 @@ struct PersonVertex
     bool visited;//boolean if it is visited
     vector<bool>MatchedList;//list to check if they have been matched before
     Human h1;//person object not sure if should be here
+    vector<float> differenceValues;
 };
 
 class ConnectivityGraph
@@ -36,6 +37,7 @@ class ConnectivityGraph
     void updateInfo(int id);//updates Human opject's info
     bool swipedBack(int id_1,int id_2);//check if the person you matched with is connected back
     void Matches(int id);//prints out who is connected back to user(in this case the id that it is called with)
+    float findDiff(Human, Human); //finds the differenceValues for a pair of humans
 
   private:
     vector<PersonVertex> vertices; //stores vertices

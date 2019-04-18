@@ -12,6 +12,19 @@ ConnectivityGraph::~ConnectivityGraph(){
 
 }
 
+float ConnectivityGraph::findDiff(Human h1, Human h2)
+{
+  int *arr1 = h1.getQuestionAnswers();
+  int *arr2 = h2.getQuestionAnswers();
+  unsigned int diff = 0;
+  for(int i = 0;i<10;i++)
+  {
+    diff += (*(arr1+i) - *(arr2+i));
+  }
+  diff /= 10.0;
+  return diff;
+}
+
 void ConnectivityGraph::addVertex(string name){
   PersonVertex v1;
   v1.id = currentAmtOfNames;

@@ -98,8 +98,3 @@ void Human::setQuestionAnswers(int questionAnswersC[10])
     questionAnswers[i] = questionAnswersC[i];
   }
 }
-
-int Human::findHuman(string name)
-{
-  return userIndex;
-}
