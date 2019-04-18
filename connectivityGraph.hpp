@@ -4,10 +4,11 @@
 
 #include <vector>
 #include <iostream>
+#include "Human.hpp"
 
 using namespace std;
-struct PersonVertex;
 
+struct PersonVertex;
 
 /*this is the struct for each vertex in the graph. */
 struct PersonVertex
@@ -16,7 +17,7 @@ struct PersonVertex
     vector<PersonVertex*> Edges; //stores edges to adjacent vertices
     bool visited;//boolean if it is visited
     vector<bool>MatchedList;//list to check if they have been matched before
-    //Person p1;//person object not sure if should be here
+    Human h1;//person object not sure if should be here
 };
 
 class ConnectivityGraph
@@ -32,8 +33,7 @@ class ConnectivityGraph
     void setAllVerticesUnvisited();//this will set all person verteces to not be visited
     string IdToName(int id); //flip the id to name
     int NameToId(string name);//flips the name to the id associated with it
-
-
+    void updateInfo(int id);//updates Human opject's info
     bool swipedBack(int id_1,int id_2);//check if the person you matched with is connected back
     void Matches(int id);//prints out who is connected back to user(in this case the id that it is called with)
 

@@ -4,11 +4,6 @@
 #include <iostream>
 using namespace std;
 
-struct PersonVertex
-{
-
-};
-
 class Human
 {
 public:
