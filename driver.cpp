@@ -7,8 +7,6 @@ using namespace std;
 
 int main(int argc, const char *argv[])
 {
-
-
   ConnectivityGraph g1;
   g1.addVertex("Coral");
   g1.addVertex("John Mic Big Dick");

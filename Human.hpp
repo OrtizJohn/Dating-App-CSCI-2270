@@ -24,8 +24,6 @@ public:
   void setSexualOrientation(bool);
   int *getQuestionAnswers();
   void setQuestionAnswers(int [10]);
-  int findHuman(string);
-
 
 private:
   string userName;
