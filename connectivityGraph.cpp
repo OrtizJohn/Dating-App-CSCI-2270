@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 ConnectivityGraph::ConnectivityGraph(){
   currentAmtOfNames =0;
 }

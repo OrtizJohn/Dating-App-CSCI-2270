@@ -103,8 +103,3 @@ int Human::findHuman(string name)
 {
   return userIndex;
 }
-
-// int main()
-// {
-//   return 0;
-// }
