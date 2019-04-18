@@ -101,10 +101,10 @@ void Human::setQuestionAnswers(int questionAnswersC[10])
 
 int Human::findHuman(string name)
 {
-  return index;
+  return userIndex;
 }
 
-int main()
-{
-  return 0;
-}
+// int main()
+// {
+//   return 0;
+// }

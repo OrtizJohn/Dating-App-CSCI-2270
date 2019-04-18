@@ -22,7 +22,7 @@ void ConnectivityGraph::addVertex(string name){
   currentAmtOfNames++;
   incrementMatchedList();
   vertices.push_back(v1);
-  h1.setName(name);
+  v1.h1.setName(name);
 }
 
 void ConnectivityGraph::incrementMatchedList(){
