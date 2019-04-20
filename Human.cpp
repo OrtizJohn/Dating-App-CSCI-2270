@@ -98,3 +98,9 @@ void Human::setQuestionAnswers(int questionAnswersC[10])
     questionAnswers[i] = questionAnswersC[i];
   }
 }
+void Human::setPassword(string Password){
+  password = Password;
+}
+string Human::getPassword(){
+  return password;
+}

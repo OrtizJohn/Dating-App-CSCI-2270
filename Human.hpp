@@ -12,6 +12,12 @@ public:
   ~Human();
   string getName();
   void setName(string);
+
+  //changed
+  void setPassword(string);
+  string getPassword();
+
+  
   int getAge();
   void setAge(int);
   float getHeight();
@@ -27,7 +33,7 @@ public:
 
 private:
   string userName;
-  string password = "password";
+  string password = "password"; //I think this needs to be changed to actually hold a password
   int userIndex;
   string name;
   int age;

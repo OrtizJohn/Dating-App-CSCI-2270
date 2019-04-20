@@ -38,6 +38,7 @@ class ConnectivityGraph
     bool swipedBack(int id_1,int id_2);//check if the person you matched with is connected back
     void Matches(int id);//prints out who is connected back to user(in this case the id that it is called with)
     float findDiff(Human, Human); //finds the differenceValues for a pair of humans
+    bool checkLogin(string ,string ); //will check if a user has the right credentials
 
   private:
     vector<PersonVertex> vertices; //stores vertices

@@ -34,6 +34,7 @@ void ConnectivityGraph::addVertex(string name){
   incrementMatchedList();
   vertices.push_back(v1);
   v1.h1.setName(name);
+  cout<< v1.h1.getName()<<endl;
 }
 
 void ConnectivityGraph::incrementMatchedList(){
@@ -110,5 +111,20 @@ void ConnectivityGraph::Matches(int id){//use this persons id to check there con
 
     }
   }
+
+}
+bool ConnectivityGraph::checkLogin(string name,string password){
+    PersonVertex *User = findVertex(NameToId(name));
+    if(User == NULL){
+      return true;
+    }
+    cout<<IdToName(User->id)<<endl;
+    cout<<User->h1.getName()<<endl;
+    cout<<User->h1.getPassword()<<endl;
+    if ((User->h1.getName() == name)&&(User->h1.getPassword() == password)){
+      cout<<"Welcome... " <<name<<endl;
+      return false;
+    }
+    return true;
 
 }
