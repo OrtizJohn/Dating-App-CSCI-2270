@@ -17,7 +17,7 @@ public:
   void setPassword(string);
   string getPassword();
 
-  
+
   int getAge();
   void setAge(int);
   float getHeight();
@@ -32,7 +32,7 @@ public:
   void setQuestionAnswers(int [10]);
 
 private:
-  string userName;
+  //string userName; will not need cause have to use full name to recognize them by
   string password = "password"; //I think this needs to be changed to actually hold a password
   int userIndex;
   string name;

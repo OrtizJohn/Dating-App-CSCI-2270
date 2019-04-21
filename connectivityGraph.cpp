@@ -33,8 +33,9 @@ void ConnectivityGraph::addVertex(string name){
   currentAmtOfNames++;
   incrementMatchedList();
   vertices.push_back(v1);
-  v1.h1.setName(name);
-  cout<< v1.h1.getName()<<endl;
+  setNameHuman(name);
+  //v1.h1.setName(name);
+  // cout<< v1.h1.getName()<<endl;
 }
 
 void ConnectivityGraph::incrementMatchedList(){
@@ -127,4 +128,9 @@ bool ConnectivityGraph::checkLogin(string name,string password){
     }
     return true;
 
+}
+
+void ConnectivityGraph::setNameHuman(string name){
+  PersonVertex *temp = findVertex(NameToId(name));
+  temp->h1.setName(name);
 }

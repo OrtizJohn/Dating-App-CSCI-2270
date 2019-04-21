@@ -21,7 +21,7 @@ Human::Human(string nameC, int ageC, float heightC, string majorC,
   {
     questionAnswers[i] = questionAnswersC[i];
   }
-  userName = nameC;
+  //userName = nameC;
 }
 
 Human::~Human()
@@ -37,7 +37,7 @@ string Human::getName()
 void Human::setName(string nameC)
 {
   name = nameC;
-  userName = nameC;
+  //userName = nameC;
 }
 
 int Human::getAge()

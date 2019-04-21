@@ -37,8 +37,14 @@ class ConnectivityGraph
     void updateInfo(int id);//updates Human opject's info
     bool swipedBack(int id_1,int id_2);//check if the person you matched with is connected back
     void Matches(int id);//prints out who is connected back to user(in this case the id that it is called with)
+
+    //human functions
     float findDiff(Human, Human); //finds the differenceValues for a pair of humans
     bool checkLogin(string ,string ); //will check if a user has the right credentials
+    void setNameHuman(string); //will find human and write there name should be implemented in the addVertex function
+
+
+    PersonVertex *findVertex(int id);//will find a person vertex in verteces vector
 
   private:
     vector<PersonVertex> vertices; //stores vertices
@@ -47,7 +53,7 @@ class ConnectivityGraph
     void incrementMatchedList();//will increase the amount in each person's matched list
 
 
-    PersonVertex *findVertex(int id);//will find a person vertex in verteces vector
+
     //void BFTraversal(vertex *v);//helper BFT
     //void DFTraversal(vertex *v);//helper to DFT
 
