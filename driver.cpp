@@ -158,6 +158,7 @@ void userInterface(ConnectivityGraph *g1,string name){
 
     if(stoi(ans)==1){
       //display profile
+      g1->printHumanQualities(name);
 
     }
 		else if(stoi(ans) == 2){

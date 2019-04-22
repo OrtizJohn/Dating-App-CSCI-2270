@@ -44,6 +44,7 @@ class ConnectivityGraph
     bool checkLogin(string ,string ); //will check if a user has the right credentials
     void setNameHuman(string); //will find human and write there name should be implemented in the addVertex function
     void setHumanQualitites(string name,string password,int age,float height,string major,bool gender,bool sexualOrientation,int questionAnswers[10]);
+    void printHumanQualities(string name);
 
 
     PersonVertex *findVertex(int id);//will find a person vertex in verteces vector
