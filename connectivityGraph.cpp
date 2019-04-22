@@ -146,7 +146,31 @@ void ConnectivityGraph::setHumanQualitites(string name,string password,int age,f
   temp->h1.setQuestionAnswers(questionAnswers);
 }
 
+void ConnectivityGraph::printHumanQualities(string name){
+  PersonVertex *temp = findVertex(NameToId(name));
+  int *questionAnswers = temp->h1.getQuestionAnswers();
+  cout<< "Here is your profile:"<<endl<<endl;
+  cout<< "Name: " << name<<endl;
+  cout<< "Age: " << temp->h1.getAge()<<endl;
+  cout<<"Height: "<< temp->h1.getHeight()<<" inches"<<endl;
+  cout<<"Declared Major: "<< temp->h1.getMajor()<<endl;
+  if(temp->h1.getGender()) cout<<"Gender(biologically): Female"<<endl;
+  else if(!temp->h1.getGender()) cout<<"Gender(biologically): Male"<<endl;
+  if(temp->h1.getSexualOrientation()) cout<<"Sexually attracted to: Females"<<endl;
+  else if(!temp->h1.getSexualOrientation()) cout<<"Sexually attracted to: Males"<<endl;
+  cout<<"For the following questions you answered on a scale of 1(strongly disagree) to 5(strongly agree)..."<<endl;
+  cout<<"You are very active. Answered: " <<questionAnswers[0]<<endl;
+  cout<<"You are very organized."<<questionAnswers[1]<<endl;
+  cout<<"On a Friday Night, you would rather stay in and watch Netflix than go out and party."<<questionAnswers[2]<<endl;
+  cout<<"You love all types of sports."<<questionAnswers[3]<<endl;
+  cout<<"You are a nightowl."<<questionAnswers[4]<<endl;
+  cout<<"You are looking for a long term relationship."<<questionAnswers[5]<<endl;
+  cout<<"You are a good communicator."<<questionAnswers[6]<<endl;
+  cout<<"You like to be the center of attention."<<questionAnswers[7]<<endl;
+  cout<<"You are open to new ideas."<<questionAnswers[8]<<endl;
+  cout<<"There is nothing better in a partner than the ability to make you laugh."<<questionAnswers[9]<<endl;
 
+}
 bool ConnectivityGraph::isInGraph(string name){
   PersonVertex *User = findVertex(NameToId(name));
   if(User == NULL){

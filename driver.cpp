@@ -25,12 +25,12 @@ void printUserMenu(){
   cout <<"  1. Display Profile"<<endl;
   cout <<"  2. Update Profile" <<endl;
   cout <<"  3. Potential Matches" <<endl;
-  cout<< "  4. Matched People"<<endl;
+  cout<< "  4. Matched People (messages)"<<endl;
   cout<< "  5. Log Out"<<endl;
   cout<<"--------------------------"<<endl;
 }
 
-void UpdateHumanHelper(ConnectivityGraph* g1,string name, string password){
+void UpdateHumanHelper(ConnectivityGraph* g1,string name, string password,bool newUser){
 //string name,string password,int age,float height,string major,bool gender,bool sexualOrientation,int questionAnswers[10]
   string age1,height1,gender1,sexualOrientation1;
   int age;
@@ -59,28 +59,86 @@ void UpdateHumanHelper(ConnectivityGraph* g1,string name, string password){
 
   cout<<endl;
   //cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+  string q11,q22,q33,q44,q55,q66,q77,q88,q99,q1010;
   int q1,q2,q3,q4,q5,q6,q7,q8,q9,q10;
   cout<<"The next 10 questions please answer on a scale of 1-5 (1-strongly disagree, 5-strongly agree)?"<<endl;
+  cout<<"You are very active."<<endl;
+  getline(cin,q11);
+  q1 = stoi(q11);
+  arr[0]=q1;
+  cout<<"You are very organized."<<endl;
+  getline(cin,q22);
+  q2 = stoi(q22);
+  arr[1]=q2;
+  cout<<"On a Friday Night, you would rather stay in and watch Netflix than go out and party."<<endl;
+  getline(cin,q33);
+  q3 = stoi(q33);
+  arr[2]=q3;
+  cout<<"You love all types of sports."<<endl;
+  getline(cin,q44);
+  q4 = stoi(q44);
+  arr[3]=q4;
+  cout<<"You are a nightowl."<<endl;
+  getline(cin,q55);
+  q5 = stoi(q55);
+  arr[4]=q5;
+  cout<<"You are looking for a long term relationship."<<endl;
+  getline(cin,q66);
+  q6 = stoi(q66);
+  arr[5]=q6;
+  cout<<"You are a good communicator."<<endl;
+  getline(cin,q77);
+  q7 = stoi(q77);
+  arr[6]=q7;
+  cout<<"You like to be the center of attention."<<endl;
+  getline(cin,q88);
+  q8 = stoi(q88);
+  arr[7]=q8;
+  cout<<"You are open to new ideas."<<endl;
+  getline(cin,q99);
+  q9 = stoi(q99);
+  arr[8]=q9;
+  cout<<"There is nothing better in a partner than the ability to make you laugh."<<endl;
+  getline(cin,q1010);
+  q10 = stoi(q1010);
+  arr[9]=q10;
+  cout<<"[";
+  for(int i=0;i<10;i++){
+    cout<< arr[i]<<",";
+  }
+  cout<<"]"<<endl;
+  g1->setHumanQualitites(name,password,age,height,major,gender,sexualOrientation,arr);
+
+  if(newUser){
+    cout<<"Great you will now be taken back to the main menu to login..."<<endl<<endl;
+
+  }
+  else{
+    cout<< "Your profile has been updated!"<<endl<<endl;
+  }
+
+
+
 
 
 }
 
-void UpdateHuman(ConnectivityGraph* g1, string name,bool new1){
+void UpdateHuman(ConnectivityGraph* g1, string name,bool newUser){
 
 
   string password;
   string updateProfileAns;
-  if(new1){
+  if(newUser){
     cout<<"This is where you will be updating your profile..."<<endl<<endl;
     cout<< "Before starting, we need you to set up your password, your full name will be your username, so what would you like your password to be? "<<endl;
     getline(cin,password);
     //UpdateHumanHelper
-    UpdateHumanHelper(g1,name,password);
+    UpdateHumanHelper(g1,name,password,1);
   }
   else{
     PersonVertex *temp = g1->findVertex(g1->NameToId(name));
     password = temp->h1.getPassword();
-    UpdateHumanHelper(g1,name,password);
+    UpdateHumanHelper(g1,name,password,0);
   }
 
 
@@ -100,11 +158,10 @@ void userInterface(ConnectivityGraph *g1,string name){
 
     if(stoi(ans)==1){
       //display profile
+      g1->printHumanQualities(name);
 
     }
 		else if(stoi(ans) == 2){
-
-      //update profile call function
       UpdateHuman(g1,name,0);
 		}
     else if(stoi(ans)==3){
