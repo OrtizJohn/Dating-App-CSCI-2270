@@ -250,7 +250,7 @@ int main(int argc, const char *argv[])
   cout<<endl;
 
     //cout<<g1.AlreadyMatched(g1.NameToId("Admin"),g1.NameToId("Coral"))<<endl;
-    string name = "Coral";
+    string name = "John M";
 
 
 
@@ -272,58 +272,66 @@ int main(int argc, const char *argv[])
       //continue cycle
 
     PersonVertex *temp = g1.findVertex(g1.NameToId(name));
-
+    cout<< "current amt of names" <<g1.getCurrentAmtOfNames()<<endl;
     Queue *q1 = new Queue(g1.getCurrentAmtOfNames(),*temp);
-    for(int i =0; i<g1.getCurrentAmtOfNames();i++){
-      cout<<"index: "<<i<<", index of User: " <<g1.NameToId(name)<<endl;
-      if((i!= g1.NameToId(name)) && (!g1.AlreadyMatched(g1.NameToId(name),i))){ //write an and statement to check if already matched with a person
-        cout<<"hi"<<endl;
-        PersonVertex *comparingUser = g1.findVertex(i);
-        cout<<"adding " <<g1.IdToName(i)<<endl;
-        cout<< g1.IdToName(comparingUser->id)<<endl;
-        q1->enqueue(*comparingUser);
-
-
-      }
+    for(int i=0;i<g1.getCurrentAmtOfNames();i++){
+      PersonVertex *comparingUser = g1.findVertex(i);
+      q1->enqueue(*comparingUser);
+      cout<<"hi"<<endl;
     }
-    bool continue1 = true;
-    while(continue1){
-      if(q1->isEmpty()){
-        cout<<"There is no potential matches for you, you might want to consider updating your profile..."<<endl;
-        continue1=false;
-      }else{
-        string matchAnswer;
-        string continueLookingAtQueue;
-        //PersonVertex PotentialMatch = q1->peek();
-        PersonVertex PotentialMatch = q1->peek();
-        cout<<endl;
-        cout<<"Here is your recommended match: "<<endl;
-        g1.printHumanQualities(g1.IdToName(PotentialMatch.id));
-        cout<<endl;
-        cout<<"Would you be interested in talking with this person? (yes or no)"<<endl;
-        getline(cin,matchAnswer);
-        if(matchAnswer == "yes"){
-          g1.addEdge(g1.NameToId(name),g1.NameToId(g1.IdToName(PotentialMatch.id)));
-          q1->dequeue();
+    // for(int i =0; i<g1.getCurrentAmtOfNames();i++){
+    //   cout<<"index: "<<i<<", index of User: " <<g1.NameToId(name)<<endl;
+    //   if((i!= g1.NameToId(name)) && (!g1.AlreadyMatched(g1.NameToId(name),i))){ //write an and statement to check if already matched with a person
+    //     cout<<"hi"<<endl;
+    //     PersonVertex *comparingUser = g1.findVertex(i);
+    //     cout<<"adding " <<g1.IdToName(i)<<endl;
+    //     cout<< g1.IdToName(comparingUser->id)<<endl;
+    //     q1->enqueue(*comparingUser);
+    //
+    //
+    //   }
+    // }
+    // bool continue1 = true;
+    // while(continue1){
+    //   if(q1->isEmpty()){
+    //     cout<<"There is no potential matches for you, you might want to consider updating your profile..."<<endl;
+    //     continue1=false;
+    //   }else{
+    //     string matchAnswer;
+    //     string continueLookingAtQueue;
+    //     //PersonVertex PotentialMatch = q1->peek();
+    //     PersonVertex PotentialMatch = q1->peek();
+    //     cout<<endl;
+    //     cout<<"Here is your recommended match: "<<endl;
+    //     g1.printHumanQualities(g1.IdToName(PotentialMatch.id));
+    //     cout<<endl;
+    //     cout<<"Would you be interested in talking with this person? (yes or no)"<<endl;
+    //     getline(cin,matchAnswer);
+    //     if(matchAnswer == "yes"){
+    //       g1.addEdge(g1.NameToId(name),g1.NameToId(g1.IdToName(PotentialMatch.id)));
+    //       q1->dequeue();
+    //
+    //     }
+    //     else if(matchAnswer == "no"){
+    //       q1->dequeue();
+    //
+    //     }
+    //
+    //     cout<<"Want to continue looking for your potential matches?"<<endl;
+    //     getline(cin,continueLookingAtQueue);
+    //     if(continueLookingAtQueue == "yes"){
+    //       cout<< "We will check who is the next best potential match"<<endl;
+    //     }
+    //     else if(matchAnswer == "no"){
+    //       cout<<"Ok you will be brought back to the menu screen."<<endl;
+    //       continue1=false;
+    //     }
+    //   }
+    //
+    // }
 
-        }
-        else if(matchAnswer == "no"){
-          q1->dequeue();
 
-        }
 
-        cout<<"Want to continue looking for your potential matches?"<<endl;
-        getline(cin,continueLookingAtQueue);
-        if(continueLookingAtQueue == "yes"){
-          cout<< "We will check who is the next best potential match"<<endl;
-        }
-        else if(matchAnswer == "no"){
-          cout<<"Ok you will be brought back to the menu screen."<<endl;
-          continue1=false;
-        }
-      }
-
-    }
   // cout<< endl;
   // g1.Matches(g1.NameToId("John M"));
   // g1.Matches(g1.NameToId("Admin 23"));
