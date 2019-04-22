@@ -242,9 +242,3 @@ bool Queue::isEmpty()
   }
   return false;
 }
-
-int main()
-{
-
-  return 0;
-}
