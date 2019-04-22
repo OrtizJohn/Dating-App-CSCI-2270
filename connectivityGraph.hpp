@@ -18,7 +18,7 @@ struct PersonVertex
     bool visited;//boolean if it is visited
     vector<bool>MatchedList;//list to check if they have been matched before
     Human h1;//person object not sure if should be here
-    vector< vector<string> > messages;//2d vector for messages  
+    vector< vector<string> > messages;//2d vector for messages
 };
 
 class ConnectivityGraph
@@ -29,6 +29,7 @@ class ConnectivityGraph
     void addEdge(int v1, int v2);//this will connect one person to another
     void addVertex(string name);//will create new Person vertex -add name to names vector
     void displayEdges(); //displays who is connected to who
+    int getCurrentAmtOfNames();//will return the current amt of ppl in dating app
     //void printDFT(); //depth first traversal not sure if needed
     //void printBFT(); //breadth first traversal not sure if needed
     void setAllVerticesUnvisited();//this will set all person verteces to not be visited

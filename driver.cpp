@@ -4,6 +4,7 @@
 #include<iomanip>
 #include<math.h>
 #include"connectivityGraph.hpp"
+#include "PriorityQueue.hpp"
 
 using namespace std;
 
@@ -165,6 +166,17 @@ void userInterface(ConnectivityGraph *g1,string name){
       UpdateHuman(g1,name,0);
 		}
     else if(stoi(ans)==3){
+      bool runQueue = true;
+      PersonVertex *temp = g1->findVertex(g1->NameToId(name));
+      Queue q1 (g1->getCurrentAmtOfNames(),*temp);
+      for(int i =0; i<g1->getCurrentAmtOfNames();i++){
+        if(i!= g1->NameToId(name)){ //write an and statement to check if already matched with a person
+          PersonVertex *comparingUser = g1->findVertex(i);
+          q1.enqueue(*comparingUser);
+
+        }
+
+      }
       //bool continue = true;
       //while (continue)
       //create the queue

@@ -165,3 +165,7 @@ bool ConnectivityGraph::isInGraph(string name){
   }
   return true;
 }
+
+int ConnectivityGraph::getCurrentAmtOfNames(){
+  return currentAmtOfNames;
+}
