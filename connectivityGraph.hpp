@@ -19,6 +19,7 @@ struct PersonVertex
     vector<bool>MatchedList;//list to check if they have been matched before
     Human h1;//person object not sure if should be here
     vector< vector<string> > messages;//2d vector for messages
+    vector<bool> messagedFirst; //vector to check who has started each conversation
 };
 
 class ConnectivityGraph
