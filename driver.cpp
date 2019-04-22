@@ -25,7 +25,7 @@ void printUserMenu(){
   cout <<"  1. Display Profile"<<endl;
   cout <<"  2. Update Profile" <<endl;
   cout <<"  3. Potential Matches" <<endl;
-  cout<< "  4. Matched People"<<endl;
+  cout<< "  4. Matched People (messages)"<<endl;
   cout<< "  5. Log Out"<<endl;
   cout<<"--------------------------"<<endl;
 }
