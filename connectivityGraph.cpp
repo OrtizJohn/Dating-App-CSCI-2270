@@ -134,3 +134,23 @@ void ConnectivityGraph::setNameHuman(string name){
   PersonVertex *temp = findVertex(NameToId(name));
   temp->h1.setName(name);
 }
+
+void ConnectivityGraph::setHumanQualitites(string name,string password,int age,float height,string major,bool gender,bool sexualOrientation,int questionAnswers[10]){
+  PersonVertex *temp = findVertex(NameToId(name));
+  temp->h1.setPassword(password);
+  temp->h1.setAge(age);
+  temp->h1.setHeight(height);
+  temp->h1.setMajor(major);
+  temp->h1.setGender(gender);
+  temp->h1.setSexualOrientation(sexualOrientation);
+  temp->h1.setQuestionAnswers(questionAnswers);
+}
+
+
+bool ConnectivityGraph::isInGraph(string name){
+  PersonVertex *User = findVertex(NameToId(name));
+  if(User == NULL){
+    return false;
+  }
+  return true;
+}

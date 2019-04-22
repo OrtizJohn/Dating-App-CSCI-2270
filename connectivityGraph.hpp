@@ -37,11 +37,13 @@ class ConnectivityGraph
     void updateInfo(int id);//updates Human opject's info
     bool swipedBack(int id_1,int id_2);//check if the person you matched with is connected back
     void Matches(int id);//prints out who is connected back to user(in this case the id that it is called with)
+    bool isInGraph(string name);//return if someone is in graph
 
     //human functions
     float findDiff(Human, Human); //finds the differenceValues for a pair of humans
     bool checkLogin(string ,string ); //will check if a user has the right credentials
     void setNameHuman(string); //will find human and write there name should be implemented in the addVertex function
+    void setHumanQualitites(string name,string password,int age,float height,string major,bool gender,bool sexualOrientation,int questionAnswers[10]);
 
 
     PersonVertex *findVertex(int id);//will find a person vertex in verteces vector

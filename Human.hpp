@@ -39,8 +39,8 @@ private:
   int age;
   float height;
   string major;
-  bool gender; //1 for male 0 for female
-  bool sexualOrientation; //1 for male 0 for female
+  bool gender; //0 for male 1 for female
+  bool sexualOrientation; //0 for male 1 for female
   int questionAnswers[10];
 };
 #endif

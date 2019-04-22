@@ -30,18 +30,78 @@ void printUserMenu(){
   cout<<"--------------------------"<<endl;
 }
 
-void userInterface(string name){
-  bool go = true;
-  while(go){
+void UpdateHumanHelper(ConnectivityGraph* g1,string name, string password){
+//string name,string password,int age,float height,string major,bool gender,bool sexualOrientation,int questionAnswers[10]
+  string age1,height1,gender1,sexualOrientation1;
+  int age;
+  float height;
+  string major;
+  bool gender;
+  bool sexualOrientation;
+
+  cout<<"What is your age?"<<endl;
+  getline(cin,age1);
+  age = stoi(age1);
+  cout<<"What is your height (in inches)?" <<endl;
+  getline(cin,height1);
+  height = stof(height1);
+  cout<< "What is your major?" <<endl;
+  getline(cin,major);
+  cout<< "What is your sex(male or female -biological)? If you are a male please put 0, if you are a female please put 1." <<endl;
+  getline(cin,gender1);
+  if(gender1 == "0") gender = 0;
+  else if(gender1 == "1") gender = 1;
+  cout<<"What is your sexualOrientation? If you are attracted to biological males plese put 0, if you are attracted to biological females please put 1." <<endl;
+  getline(cin,sexualOrientation1);
+  if(sexualOrientation1 == "0") sexualOrientation = 0;
+  else if(sexualOrientation1 == "1") sexualOrientation= 1;
+
+  cout<<endl;
+  cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+
+}
+
+void UpdateHuman(ConnectivityGraph* g1, string name,bool new1){
+
+
+  string password;
+  string updateProfileAns;
+  if(new1){
+    cout<<"This is where you will be updating your profile..."<<endl<<endl;
+    cout<< "Before starting, we need you to set up your password, your full name will be your username, so what would you like your password to be? "<<endl;
+    getline(cin,password);
+    //UpdateHumanHelper
+    UpdateHumanHelper(g1,name,password);
+  }
+  else{
+    PersonVertex *temp = g1->findVertex(g1->NameToId(name));
+    password = temp->h1.getPassword();
+    UpdateHumanHelper(g1,name,password);
+  }
+
+
+
+
+}
+
+
+
+void userInterface(ConnectivityGraph *g1,string name){
+  bool userInterface = true;
+
+  while(userInterface){
     printUserMenu();
     string ans="";
     getline(cin,ans);
 
     if(stoi(ans)==1){
+      //display profile
 
     }
 		else if(stoi(ans) == 2){
 
+      //update profile call function
+      UpdateHuman(g1,name,0);
 		}
     else if(stoi(ans)==3){
 
@@ -52,7 +112,7 @@ void userInterface(string name){
 		}
     else if(stoi(ans) == 5){
       cout << "Logging out..." << endl;
-      go = false;
+      userInterface = false;
 		}
 
 
@@ -60,6 +120,7 @@ void userInterface(string name){
 
   }
 }
+
 
 int main(int argc, const char *argv[])
 {
@@ -115,7 +176,7 @@ int main(int argc, const char *argv[])
 
 
   bool go = true;
-
+  cout<<"Welcome to CU Boulder's newest and most hightech Dating App!!!"<<endl;
   while(go){
     printLoginMenu();
     string ans="";
@@ -156,7 +217,8 @@ int main(int argc, const char *argv[])
         //cout<<"Heading to UserInterface..."<<endl;
         cout <<endl;
         cout<<"Which option would you like to perform?"<<endl;
-        userInterface(userName);
+        ConnectivityGraph *ptrG1 = &g1;
+        userInterface(ptrG1,userName);
       }
 
 
@@ -170,7 +232,8 @@ int main(int argc, const char *argv[])
       cout<< "To register for an account please enter your Name: ";
       getline(cin,name);
       g1.addVertex(name);
-      //g1.updateHumanInfo
+      ConnectivityGraph *ptrG1 = &g1;
+      UpdateHuman(ptrG1,name,1);
 		}
     else if(stoi(ans)==3){
       cout << "Goodbye!" << endl;
