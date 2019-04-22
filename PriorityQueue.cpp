@@ -45,7 +45,7 @@ bool heightRange(PersonVertex p1, PersonVertex p2)
   return false;
 }
 
-float findDiff(Human h1, Human h2)
+float findDiff(Human h1, Human h2) //finds the differenceValues for a pair of humans
 {
   int *arr1 = h1.getQuestionAnswers();
   int *arr2 = h2.getQuestionAnswers();
