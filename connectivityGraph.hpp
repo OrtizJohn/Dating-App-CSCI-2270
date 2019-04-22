@@ -18,7 +18,7 @@ struct PersonVertex
     bool visited;//boolean if it is visited
     vector<bool>MatchedList;//list to check if they have been matched before
     Human h1;//person object not sure if should be here
-    
+    vector< vector<string> > messages;//2d vector for messages  
 };
 
 class ConnectivityGraph
