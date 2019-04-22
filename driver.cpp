@@ -38,6 +38,7 @@ void UpdateHumanHelper(ConnectivityGraph* g1,string name, string password){
   string major;
   bool gender;
   bool sexualOrientation;
+  int arr [10];
 
   cout<<"What is your age?"<<endl;
   getline(cin,age1);
@@ -57,7 +58,10 @@ void UpdateHumanHelper(ConnectivityGraph* g1,string name, string password){
   else if(sexualOrientation1 == "1") sexualOrientation= 1;
 
   cout<<endl;
-  cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+  //cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+  int q1,q2,q3,q4,q5,q6,q7,q8,q9,q10;
+  cout<<"The next 10 questions please answer on a scale of 1-5 (1-strongly disagree, 5-strongly agree)?"<<endl;
+
 
 }
 
