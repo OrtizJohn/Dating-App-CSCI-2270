@@ -165,7 +165,21 @@ void userInterface(ConnectivityGraph *g1,string name){
       UpdateHuman(g1,name,0);
 		}
     else if(stoi(ans)==3){
-
+      //bool continue = true;
+      //while (continue)
+      //create the queue
+      //enqueue everyone
+      //not enqueu already matched ppl
+      //peek front queue print out information
+      //Ask if they are interested or not
+      //if yes
+        //add edge to this persons
+        //check if the other person has already swiped back so then we can add them to be an immediate match
+        //dequeue
+      //if no
+        //dequeue
+      //if they want to keep searching
+        //continue cycle
 
     }
     else if(stoi(ans) == 4){
