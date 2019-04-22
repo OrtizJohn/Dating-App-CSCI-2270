@@ -101,6 +101,18 @@ void ConnectivityGraph::Matches(int id){//use this persons id to check there con
   }
 
 }
+
+bool ConnectivityGraph::AlreadyMatched(int UserId,int comparingId){
+  PersonVertex *User = findVertex(UserId);
+  for(int i = 0; i<User->Edges.size();i++){
+    if((swipedBack(UserId, User->Edges[i]->id)) && (User->Edges[i]->id == comparingId)){
+      cout<< "Already Matched with " <<IdToName(User->Edges[i]->id)<< endl;
+      return true;
+
+    }
+  }
+  return false;
+}
 bool ConnectivityGraph::checkLogin(string name,string password){
     PersonVertex *User = findVertex(NameToId(name));
     if(User == NULL){
@@ -136,7 +148,7 @@ void ConnectivityGraph::setHumanQualitites(string name,string password,int age,f
 void ConnectivityGraph::printHumanQualities(string name){
   PersonVertex *temp = findVertex(NameToId(name));
   int *questionAnswers = temp->h1.getQuestionAnswers();
-  cout<< "Here is your profile:"<<endl<<endl;
+  //cout<< "Here is your profile:"<<endl<<endl;
   cout<< "Name: " << name<<endl;
   cout<< "Age: " << temp->h1.getAge()<<endl;
   cout<<"Height: "<< temp->h1.getHeight()<<" inches"<<endl;

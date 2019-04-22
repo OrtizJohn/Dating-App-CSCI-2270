@@ -38,6 +38,7 @@ class ConnectivityGraph
     void updateInfo(int id);//updates Human opject's info
     bool swipedBack(int id_1,int id_2);//check if the person you matched with is connected back
     void Matches(int id);//prints out who is connected back to user(in this case the id that it is called with)
+    bool AlreadyMatched(int userID,int comparingId);//return true if both have already matched with eachother
     bool isInGraph(string name);//return if someone is in graph
 
     //human functions

@@ -170,7 +170,7 @@ void userInterface(ConnectivityGraph *g1,string name){
       PersonVertex *temp = g1->findVertex(g1->NameToId(name));
       Queue q1 (g1->getCurrentAmtOfNames(),*temp);
       for(int i =0; i<g1->getCurrentAmtOfNames();i++){
-        if(i!= g1->NameToId(name)){ //write an and statement to check if already matched with a person
+        if((i!= g1->NameToId(name)) && (!g1->AlreadyMatched(g1->NameToId(name),i))){ //write an and statement to check if already matched with a person
           PersonVertex *comparingUser = g1->findVertex(i);
           q1.enqueue(*comparingUser);
 
@@ -214,10 +214,10 @@ int main(int argc, const char *argv[])
 
 
   ConnectivityGraph g1;
-  // g1.addVertex("Coral");
-  // g1.addVertex("John M");
-  // g1.addVertex("Christian");
-  // g1.addVertex("Sara");
+  g1.addVertex("Coral");
+  g1.addVertex("John M");
+  g1.addVertex("Christian");
+  g1.addVertex("Sara");
   g1.addVertex("Admin");
   // PersonVertex *temp = g1.findVertex(g1.NameToId("Admin"));
   // temp->h1.setName("Bob");
@@ -227,19 +227,103 @@ int main(int argc, const char *argv[])
   // cout<< temp1->h1.getName()<<endl;
   // cout<<endl;
   // cout <<g1.checkLogin("Admin","password");
+  g1.addVertex("James");
+  g1.addVertex("Julia");
+  g1.addEdge(g1.NameToId("Admin"),g1.NameToId("Coral"));
+  g1.addEdge(g1.NameToId("John M"),g1.NameToId("Christian"));
+  g1.addEdge(g1.NameToId("Christian"),g1.NameToId("Admin"));
+  g1.addEdge(g1.NameToId("Coral"),g1.NameToId("Admin"));
+  g1.addEdge(g1.NameToId("James"),g1.NameToId("Sara"));
+  g1.addEdge(g1.NameToId("John M"),g1.NameToId("Julia"));
+  g1.addEdge(g1.NameToId("Julia"),g1.NameToId("John M"));
+  g1.addEdge(g1.NameToId("Christian"),g1.NameToId("John M"));
 
-  // g1.addVertex("James");
-  // g1.addVertex("Julia");
-  // g1.addEdge(g1.NameToId("Admin"),g1.NameToId("Coral"));
-  // g1.addEdge(g1.NameToId("John M"),g1.NameToId("Christian"));
-  // g1.addEdge(g1.NameToId("Christian"),g1.NameToId("Admin"));
-  // g1.addEdge(g1.NameToId("Coral"),g1.NameToId("Admin"));
-  // g1.addEdge(g1.NameToId("James"),g1.NameToId("Sara"));
-  // g1.addEdge(g1.NameToId("John M"),g1.NameToId("Julia"));
-  // g1.addEdge(g1.NameToId("Julia"),g1.NameToId("John M"));
-  // g1.addEdge(g1.NameToId("Christian"),g1.NameToId("John M"));
-  //
-  // g1.displayEdges();
+  int AdminArr[10]={1,1,1,1,1,1,1,1,1,1};
+  g1.setHumanQualitites("Admin","password",21,62.3,"computer science",0,1,AdminArr);
+  g1.setHumanQualitites("Christian","password",18,42.3,"business",0,0,AdminArr);
+  g1.setHumanQualitites("Coral","password",17,42.3,"physics",0,0,AdminArr);
+  g1.setHumanQualitites("John M","password",19,42.3,"business",0,0,AdminArr);
+  g1.setHumanQualitites("Julia","password",16,42.3,"business",1,0,AdminArr);
+  g1.setHumanQualitites("James","password",16,42.3,"business",1,0,AdminArr);
+  g1.setHumanQualitites("Sara","password",34,53.3,"business",1,0,AdminArr);
+  g1.displayEdges();
+  cout<<endl;
+
+    //cout<<g1.AlreadyMatched(g1.NameToId("Admin"),g1.NameToId("Coral"))<<endl;
+    string name = "Coral";
+
+
+
+
+    //bool continue = true;
+    //while (continue)
+    //create the queue
+    //enqueue everyone
+    //not enqueu already matched ppl
+    //peek front queue print out information
+    //Ask if they are interested or not
+    //if yes
+      //add edge to this persons
+      //check if the other person has already swiped back so then we can add them to be an immediate match
+      //dequeue
+    //if no
+      //dequeue
+    //if they want to keep searching
+      //continue cycle
+
+    PersonVertex *temp = g1.findVertex(g1.NameToId(name));
+
+    Queue *q1 = new Queue(g1.getCurrentAmtOfNames(),*temp);
+    for(int i =0; i<g1.getCurrentAmtOfNames();i++){
+      cout<<"index: "<<i<<", index of User: " <<g1.NameToId(name)<<endl;
+      if((i!= g1.NameToId(name)) && (!g1.AlreadyMatched(g1.NameToId(name),i))){ //write an and statement to check if already matched with a person
+        cout<<"hi"<<endl;
+        PersonVertex *comparingUser = g1.findVertex(i);
+        cout<<"adding " <<g1.IdToName(i)<<endl;
+        cout<< g1.IdToName(comparingUser->id)<<endl;
+        q1->enqueue(*comparingUser);
+
+
+      }
+    }
+    bool continue1 = true;
+    while(continue1){
+      if(q1->isEmpty()){
+        cout<<"There is no potential matches for you, you might want to consider updating your profile..."<<endl;
+        continue1=false;
+      }else{
+        string matchAnswer;
+        string continueLookingAtQueue;
+        //PersonVertex PotentialMatch = q1->peek();
+        PersonVertex PotentialMatch = q1->peek();
+        cout<<endl;
+        cout<<"Here is your recommended match: "<<endl;
+        g1.printHumanQualities(g1.IdToName(PotentialMatch.id));
+        cout<<endl;
+        cout<<"Would you be interested in talking with this person? (yes or no)"<<endl;
+        getline(cin,matchAnswer);
+        if(matchAnswer == "yes"){
+          g1.addEdge(g1.NameToId(name),g1.NameToId(g1.IdToName(PotentialMatch.id)));
+          q1->dequeue();
+
+        }
+        else if(matchAnswer == "no"){
+          q1->dequeue();
+
+        }
+
+        cout<<"Want to continue looking for your potential matches?"<<endl;
+        getline(cin,continueLookingAtQueue);
+        if(continueLookingAtQueue == "yes"){
+          cout<< "We will check who is the next best potential match"<<endl;
+        }
+        else if(matchAnswer == "no"){
+          cout<<"Ok you will be brought back to the menu screen."<<endl;
+          continue1=false;
+        }
+      }
+
+    }
   // cout<< endl;
   // g1.Matches(g1.NameToId("John M"));
   // g1.Matches(g1.NameToId("Admin 23"));
@@ -260,7 +344,7 @@ int main(int argc, const char *argv[])
 
 
 
-
+/*
 
   bool go = true;
   cout<<"Welcome to CU Boulder's newest and most hightech Dating App!!!"<<endl;
@@ -331,7 +415,7 @@ int main(int argc, const char *argv[])
 
 
   }
-
+*/
 
   return 0;
 }
