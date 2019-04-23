@@ -62,7 +62,7 @@ Queue::Queue(int size, PersonVertex p1)
 {
   maxSize = size;
   currentSize = 0;
-  queue = new PersonVertex[maxSize];
+  queue = new PersonVertex[size];
   pMain = p1;
 }
 
@@ -122,11 +122,11 @@ void Queue::enqueue(PersonVertex p2)
   else
   {
     //check if person 1 is into person 2's gender and person 2 is into person 1's gender
-    if(pMain.h1.getSexualOrientation() == p2.h1.getGender() && p2.h1.getSexualOrientation() == pMain.h1.getGender())
+    if((pMain.h1.getSexualOrientation() == p2.h1.getGender()) && (p2.h1.getSexualOrientation() == pMain.h1.getGender()))
     {
       queue[currentSize] = p2;
-      currentSize += 1;
-      repairUpwards(currentSize-1);
+      currentSize++;
+      repairUpwards(currentSize);
     }
   }
 }
@@ -208,7 +208,7 @@ void Queue::dequeue()
   {
     queue[0] = queue[currentSize-1];
     currentSize--;
-    repairDownwards(0);
+    repairDownwards(-1);
   }
 }
 

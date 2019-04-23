@@ -166,17 +166,18 @@ void userInterface(ConnectivityGraph *g1,string name){
       UpdateHuman(g1,name,0);
 		}
     else if(stoi(ans)==3){
-      bool runQueue = true;
-      PersonVertex *temp = g1->findVertex(g1->NameToId(name));
-      Queue q1 (g1->getCurrentAmtOfNames(),*temp);
-      for(int i =0; i<g1->getCurrentAmtOfNames();i++){
-        if((i!= g1->NameToId(name)) && (!g1->AlreadyMatched(g1->NameToId(name),i))){ //write an and statement to check if already matched with a person
-          PersonVertex *comparingUser = g1->findVertex(i);
-          q1.enqueue(*comparingUser);
+      // bool runQueue = true;
+      // PersonVertex *temp = g1->findVertex(g1->NameToId(name));
+      // Queue q1 (g1->getCurrentAmtOfNames(),*temp);
+      // for(int i =0; i<g1->getCurrentAmtOfNames();i++){
+      //   if((i!= g1->NameToId(name)) && (!g1->AlreadyMatched(g1->NameToId(name),i))){ //write an and statement to check if already matched with a person
+      //     PersonVertex *comparingUser = g1->findVertex(i);
+      //     q1.enqueue(*comparingUser);
+      //
+      //   }
+      //
+      // }
 
-        }
-
-      }
       //bool continue = true;
       //while (continue)
       //create the queue
@@ -192,6 +193,64 @@ void userInterface(ConnectivityGraph *g1,string name){
         //dequeue
       //if they want to keep searching
         //continue cycle
+
+
+
+        PersonVertex *temp = g1->findVertex(g1->NameToId(name));
+        cout<< "current amt of names" <<g1->getCurrentAmtOfNames()<<endl;
+        Queue *q1 = new Queue(g1->getCurrentAmtOfNames(),*temp);
+
+        for(int i =0; i<g1->getCurrentAmtOfNames();i++){
+          cout<<"index: "<<i<<", index of User: " <<g1->NameToId(name)<<endl;
+          if((i!= g1->NameToId(name)) && (!g1->swipedBack(i,g1->NameToId(name)))){ //write an and statement to check if already matched with a person
+            cout<<"hi"<<endl;
+            PersonVertex *comparingUser = g1->findVertex(i);
+            cout<<"adding " <<g1->IdToName(i)<<endl;
+            cout<< g1->IdToName(comparingUser->id)<<endl;
+            q1->enqueue(*comparingUser);
+
+
+          }
+        }
+        bool continue1 = true;
+        while(continue1){
+          if(q1->isEmpty()){
+            //cout<<"There is no potential matches for you, you might want to consider updating your profile..."<<endl;
+            continue1=false;
+          }else{
+            string matchAnswer;
+            string continueLookingAtQueue;
+            //PersonVertex PotentialMatch = q1->peek();
+            PersonVertex PotentialMatch = q1->peek();
+            cout<<endl;
+            cout<<"Here is your recommended match: "<<endl;
+            g1->printHumanQualities(g1->IdToName(PotentialMatch.id));
+            cout<<endl;
+            cout<<"Would you be interested in talking with this person? (yes or no)"<<endl;
+            getline(cin,matchAnswer);
+            if(matchAnswer == "yes"){
+              g1->addEdge(g1->NameToId(name),g1->NameToId(g1->IdToName(PotentialMatch.id)));
+              q1->dequeue();
+
+
+            }
+            else if(matchAnswer == "no"){
+              q1->dequeue();
+
+            }
+
+            cout<<"Want to continue looking for your potential matches?"<<endl;
+            getline(cin,continueLookingAtQueue);
+            if(continueLookingAtQueue == "yes"){
+              cout<< "We will check who is the next best potential match"<<endl;
+            }
+            else if(continueLookingAtQueue == "no"){
+              cout<<"Ok you will be brought back to the menu screen."<<endl;
+              continue1=false;
+            }
+          }
+
+        }
 
     }
     else if(stoi(ans) == 4){
@@ -246,11 +305,11 @@ int main(int argc, const char *argv[])
   g1.setHumanQualitites("Julia","password",16,42.3,"business",1,0,AdminArr);
   g1.setHumanQualitites("James","password",16,42.3,"business",1,0,AdminArr);
   g1.setHumanQualitites("Sara","password",34,53.3,"business",1,0,AdminArr);
-  g1.displayEdges();
+  //g1.displayEdges();
   cout<<endl;
 
     //cout<<g1.AlreadyMatched(g1.NameToId("Admin"),g1.NameToId("Coral"))<<endl;
-    string name = "John M";
+
 
 
 
@@ -271,64 +330,7 @@ int main(int argc, const char *argv[])
     //if they want to keep searching
       //continue cycle
 
-    PersonVertex *temp = g1.findVertex(g1.NameToId(name));
-    cout<< "current amt of names" <<g1.getCurrentAmtOfNames()<<endl;
-    Queue *q1 = new Queue(g1.getCurrentAmtOfNames(),*temp);
-    for(int i=0;i<g1.getCurrentAmtOfNames();i++){
-      PersonVertex *comparingUser = g1.findVertex(i);
-      q1->enqueue(*comparingUser);
-      cout<<"hi"<<endl;
-    }
-    // for(int i =0; i<g1.getCurrentAmtOfNames();i++){
-    //   cout<<"index: "<<i<<", index of User: " <<g1.NameToId(name)<<endl;
-    //   if((i!= g1.NameToId(name)) && (!g1.AlreadyMatched(g1.NameToId(name),i))){ //write an and statement to check if already matched with a person
-    //     cout<<"hi"<<endl;
-    //     PersonVertex *comparingUser = g1.findVertex(i);
-    //     cout<<"adding " <<g1.IdToName(i)<<endl;
-    //     cout<< g1.IdToName(comparingUser->id)<<endl;
-    //     q1->enqueue(*comparingUser);
-    //
-    //
-    //   }
-    // }
-    // bool continue1 = true;
-    // while(continue1){
-    //   if(q1->isEmpty()){
-    //     cout<<"There is no potential matches for you, you might want to consider updating your profile..."<<endl;
-    //     continue1=false;
-    //   }else{
-    //     string matchAnswer;
-    //     string continueLookingAtQueue;
-    //     //PersonVertex PotentialMatch = q1->peek();
-    //     PersonVertex PotentialMatch = q1->peek();
-    //     cout<<endl;
-    //     cout<<"Here is your recommended match: "<<endl;
-    //     g1.printHumanQualities(g1.IdToName(PotentialMatch.id));
-    //     cout<<endl;
-    //     cout<<"Would you be interested in talking with this person? (yes or no)"<<endl;
-    //     getline(cin,matchAnswer);
-    //     if(matchAnswer == "yes"){
-    //       g1.addEdge(g1.NameToId(name),g1.NameToId(g1.IdToName(PotentialMatch.id)));
-    //       q1->dequeue();
-    //
-    //     }
-    //     else if(matchAnswer == "no"){
-    //       q1->dequeue();
-    //
-    //     }
-    //
-    //     cout<<"Want to continue looking for your potential matches?"<<endl;
-    //     getline(cin,continueLookingAtQueue);
-    //     if(continueLookingAtQueue == "yes"){
-    //       cout<< "We will check who is the next best potential match"<<endl;
-    //     }
-    //     else if(matchAnswer == "no"){
-    //       cout<<"Ok you will be brought back to the menu screen."<<endl;
-    //       continue1=false;
-    //     }
-    //   }
-    //
-    // }
+
 
 
 
@@ -352,7 +354,7 @@ int main(int argc, const char *argv[])
 
 
 
-/*
+
 
   bool go = true;
   cout<<"Welcome to CU Boulder's newest and most hightech Dating App!!!"<<endl;
@@ -396,8 +398,8 @@ int main(int argc, const char *argv[])
         //cout<<"Heading to UserInterface..."<<endl;
         cout <<endl;
         cout<<"Which option would you like to perform?"<<endl;
-        ConnectivityGraph *ptrG1 = &g1;
-        userInterface(ptrG1,userName);
+        //ConnectivityGraph *ptrG1 = &g1;
+        userInterface(&g1,userName);
       }
 
 
@@ -423,7 +425,7 @@ int main(int argc, const char *argv[])
 
 
   }
-*/
+
 
   return 0;
 }
