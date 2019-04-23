@@ -404,7 +404,7 @@ int main(int argc, const char *argv[])
 
   ConnectivityGraph g1;
 
-  cout<<"hi"<<endl;
+  
   ifstream inFile("SimulationPeople.txt");
   if(inFile.fail()){
     std::cout<< "Failed to open the file." <<std::endl;
@@ -467,7 +467,7 @@ int main(int argc, const char *argv[])
       }
     }
   }
-  cout<<"hi"<<endl;
+
 
 
 
@@ -507,7 +507,7 @@ int main(int argc, const char *argv[])
   g1.addEdge(g1.NameToId("Julia"),g1.NameToId("John_M"));
   g1.addEdge(g1.NameToId("Christian"),g1.NameToId("John_M"));
 
-  
+
   //g1.setHumanQualitites("Admin","password",21,62.3,"computer science",0,1,AdminArr);
   //g1.setHumanQualitites("Christian","password",18,42.3,"business",0,0,AdminArr);
   //g1.setHumanQualitites("Coral","password",17,42.3,"physics",0,0,AdminArr);
