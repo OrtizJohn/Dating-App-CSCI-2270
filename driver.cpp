@@ -15,7 +15,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
       //obtains the list of matched indexes
       for(int i = 0; i< g1->getCurrentAmtOfNames(); i++)
       {
-        if(g1->swipedBack(temp->id, i) &&  i != temp->id)
+        if(g1->swipedBack(i, temp->id) &&  i != temp->id)
         {
           list.push_back(i); //gets indexes of people who's matched with
         }
@@ -34,7 +34,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
       getline(cin,input);
       while(input != "q")
       {
-        if(g1->isInGraph(input) && g1->swipedBack(temp->id, g1->NameToId(input)))
+        if(g1->isInGraph(input) && g1->swipedBack(g1->NameToId(input), temp->id))
         {
           break;
         }
@@ -460,7 +460,7 @@ int main(int argc, const char *argv[])
   g1.addVertex("John M");
   g1.addVertex("Christian");
   g1.addVertex("Sara");
-  g1.addVertex("Admin");
+  //g1.addVertex("Admin");
   // PersonVertex *temp = g1.findVertex(g1.NameToId("Admin"));
   // temp->h1.setName("Bob");
   // cout<< temp->h1.getName()<<endl;
