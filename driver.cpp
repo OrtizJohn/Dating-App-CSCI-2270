@@ -11,23 +11,18 @@ using namespace std;
 
 void CheckMessages(ConnectivityGraph *g1,string name){
       PersonVertex *temp = g1->findVertex(g1->NameToId(name)); //obtains a variable that uses the current user's data
-      vector<int> list; //list of matches with indexes of people matched with the current user
+       //list of matches with indexes of people matched with the current user
       //obtains the list of matched indexes
-      for(int i = 0; i< g1->getCurrentAmtOfNames(); i++)
-      {
-        if(g1->swipedBack(temp->id, i) &&  i != temp->id)
-        {
-          list.push_back(i); //gets indexes of people who's matched with
-        }
-      }
+      // for(int i = 0; i < g1->getCurrentAmtOfNames(); i++)
+      // {
+      //   if(g1->swipedBack(i, temp->id))
+      //   {
+      //     cout << "You've matched with " << g1->IdToName(i) << endl; //gets indexes of people who's matched with
+      //   }
+      // }
+      g1->Matches(temp->id);
 
-      //outputs matched list
-      for(int i = 0; i < list.size();i++)
-      {
-        cout << "You've matched with " << g1->IdToName(i) << endl;
-      }
-
-      //determines who is matched with who
+    //determines who is matched with who
       string input;
       cout << "Who would you like to talk to?" << endl;
       cout << "Or enter q to exit" << endl;

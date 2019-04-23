@@ -91,7 +91,7 @@ bool ConnectivityGraph::swipedBack(int id_1,int id_2){ //id_1 will be the user t
 }
 void ConnectivityGraph::Matches(int id){//use this persons id to check there connections and check if they matched back
   PersonVertex *temp = findVertex(id);
-  cout << "Here are " << IdToName(id) << "'s matches: "<<endl;//for testing
+  cout << "Here are your's matches: "<<endl;//for testing
   //cout<< "Here are your matches: "<<endl; //real print statement
   for(int i = 0; i<temp->Edges.size();i++){
     if(swipedBack(id, temp->Edges[i]->id)){
