@@ -61,20 +61,17 @@ void CheckMessages(ConnectivityGraph *g1,string name){
           {
             case 1:
             {
-              cout << "I'm in if" << endl;
               string message;
               //they have talked yet to determine who has messaged first
               if(temp->messages[g1->NameToId(input)].empty()) //if you have messaged messaged First
               {
-                cout << "I'm in" << endl;
-                temp->messagedFirst.at(g1->NameToId(input)) = true;
+                temp->messagedFirst[g1->NameToId(input)] = true;
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)][0] = message;
               }
               else
               {
-                cout << "I'm in if" << endl;
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)].push_back(message);
