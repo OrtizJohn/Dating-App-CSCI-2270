@@ -62,6 +62,15 @@ void CheckMessages(ConnectivityGraph *g1,string name){
           //cout << "3) Unmatch with " << input << endl;
           cout << "4) Quit" << endl;
           getline(cin, choice);
+          bool factor;
+          for(int i = 0; i< temp->messages[g1->NameToId(input)].size() ;i++)
+          {
+            if(temp->messages[g1->NameToId(input)][i] != "")
+            {
+              factor = true;
+            }
+          }
+          factor = false;
           switch(stoi(choice))
           {
             case 1:
