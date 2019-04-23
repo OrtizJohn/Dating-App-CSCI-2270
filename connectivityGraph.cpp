@@ -29,7 +29,7 @@ void ConnectivityGraph::incrementMatchedList(){
   for(int i=0;i<vertices.size();i++){
     vertices[i].MatchedList.push_back(0);
     vertices[i].messagedFirst.resize(vertices.size());
-    vertices[i].messages.resize(vertices.size(),vector<string>(vertices.size(),"");
+    vertices[i].messages.resize(vertices.size(),vector<string>(vertices.size(), ""));
   }
 }
 
