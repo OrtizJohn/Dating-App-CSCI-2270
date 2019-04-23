@@ -15,7 +15,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
       //obtains the list of matched indexes
       for(int i = 0; i< g1->getCurrentAmtOfNames(); i++)
       {
-        if(g1->swipedBack(temp->id, i))
+        if(g1->swipedBack(temp->id, i) &&  i != temp->id)
         {
           list.push_back(i); //gets indexes of people who's matched with
         }
@@ -66,7 +66,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
           {
             case 1:
             {
-              cout << "I'm in" << endl;
+              cout << "I'm in if" << endl;
               string message;
               //they have talked yet to determine who has messaged first
               if(temp->messages[g1->NameToId(input)].empty()) //if you have messaged messaged First
@@ -79,6 +79,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
               }
               else
               {
+                cout << "I'm in if" << endl;
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)].push_back(message);
