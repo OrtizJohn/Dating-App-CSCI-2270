@@ -71,7 +71,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
               if(temp->messages[g1->NameToId(input)].empty()) //if you have messaged messaged First
               {
                 temp->messagedFirst[g1->NameToId(input)] = true;
-                cout << "Enter your message: " << endl;
+                cout << "Enter your message: " << endl; //
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)][0] = message;
               }
@@ -401,7 +401,7 @@ int main(int argc, const char *argv[])
 
   ConnectivityGraph g1;
 
-  
+
   ifstream inFile("SimulationPeople.txt");
   if(inFile.fail()){
     std::cout<< "Failed to open the file." <<std::endl;
