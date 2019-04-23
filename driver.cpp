@@ -202,7 +202,7 @@ void userInterface(ConnectivityGraph *g1,string name){
 
         for(int i =0; i<g1->getCurrentAmtOfNames();i++){
           cout<<"index: "<<i<<", index of User: " <<g1->NameToId(name)<<endl;
-          if((i!= g1->NameToId(name)) && (!g1->AlreadyMatched(g1->NameToId(name),i))){ //write an and statement to check if already matched with a person
+          if((i!= g1->NameToId(name)) && (!g1->swipedBack(i,g1->NameToId(name)))){ //write an and statement to check if already matched with a person
             cout<<"hi"<<endl;
             PersonVertex *comparingUser = g1->findVertex(i);
             cout<<"adding " <<g1->IdToName(i)<<endl;
