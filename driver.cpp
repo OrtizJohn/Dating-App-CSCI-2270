@@ -11,18 +11,23 @@ using namespace std;
 
 void CheckMessages(ConnectivityGraph *g1,string name){
       PersonVertex *temp = g1->findVertex(g1->NameToId(name)); //obtains a variable that uses the current user's data
-       //list of matches with indexes of people matched with the current user
+      vector<int> list; //list of matches with indexes of people matched with the current user
       //obtains the list of matched indexes
-      // for(int i = 0; i < g1->getCurrentAmtOfNames(); i++)
-      // {
-      //   if(g1->swipedBack(i, temp->id))
-      //   {
-      //     cout << "You've matched with " << g1->IdToName(i) << endl; //gets indexes of people who's matched with
-      //   }
-      // }
-      g1->Matches(temp->id);
+      for(int i = 0; i< g1->getCurrentAmtOfNames(); i++)
+      {
+        if(g1->swipedBack(temp->id, i) &&  i != temp->id)
+        {
+          list.push_back(i); //gets indexes of people who's matched with
+        }
+      }
 
-    //determines who is matched with who
+      //outputs matched list
+      for(int i = 0; i < list.size();i++)
+      {
+        cout << "You've matched with " << g1->IdToName(i) << endl;
+      }
+
+      //determines who is matched with who
       string input;
       cout << "Who would you like to talk to?" << endl;
       cout << "Or enter q to exit" << endl;
@@ -398,6 +403,8 @@ int main(int argc, const char *argv[])
 
 
   ConnectivityGraph g1;
+
+  cout<<"hi"<<endl;
   ifstream inFile("SimulationPeople.txt");
   if(inFile.fail()){
     std::cout<< "Failed to open the file." <<std::endl;
@@ -425,19 +432,42 @@ int main(int argc, const char *argv[])
 
       while(linestream >> name>>password>>age1>>height1>>major>>gender1>>sexualOrientation1>>q11>>q22>>q33>>q44>>q55>>q66>>q77>>q88>>q99>>q1010){
         g1.addVertex(name);
+        int arr[10]={};
         age= stoi(age1);
         height = stof(height1);
         if(gender1 == "0") gender = 0;
         else if(gender1 == "1") gender = 1;
         if(sexualOrientation1 == "0") sexualOrientation = 0;
         else if(sexualOrientation1 == "1") sexualOrientation= 1;
-        cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+        //cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+        q1 = stoi(q11);
+        q2 = stoi(q22);
+        q3 = stoi(q33);
+        q4 = stoi(q44);
+        q5 = stoi(q55);
+        q6 = stoi(q66);
+        q7 = stoi(q77);
+        q8 = stoi(q88);
+        q9 = stoi(q99);
+        q10 = stoi(q1010);
+        arr[0]=q1;
+        arr[1]=q2;
+        arr[2]=q3;
+        arr[3]=q4;
+        arr[4]=q5;
+        arr[5]=q6;
+        arr[6]=q7;
+        arr[7]=q8;
+        arr[8]=q9;
+        arr[9]=q10;
+        g1.setHumanQualitites(name,password,age,height,major,gender,sexualOrientation,arr);
+
 
 
       }
     }
   }
-
+  cout<<"hi"<<endl;
 
 
 
@@ -451,10 +481,10 @@ int main(int argc, const char *argv[])
 
 
   ////////////////////////////////////////////
-  g1.addVertex("Coral");
-  g1.addVertex("John M");
-  g1.addVertex("Christian");
-  g1.addVertex("Sara");
+  //g1.addVertex("Coral");
+  //g1.addVertex("John M");
+//  g1.addVertex("Christian");
+  //g1.addVertex("Sara");
 //g1.addVertex("Admin");
   // PersonVertex *temp = g1.findVertex(g1.NameToId("Admin"));
   // temp->h1.setName("Bob");
@@ -464,27 +494,55 @@ int main(int argc, const char *argv[])
   // cout<< temp1->h1.getName()<<endl;
   // cout<<endl;
   // cout <<g1.checkLogin("Admin","password");
-  g1.addVertex("James");
-  g1.addVertex("Julia");
+  //g1.addVertex("James");
+  //g1.addVertex("Julia");
+
+  ///////////////////////////////////////////////////////////////////////////////
   g1.addEdge(g1.NameToId("Admin"),g1.NameToId("Coral"));
-  g1.addEdge(g1.NameToId("John M"),g1.NameToId("Christian"));
+  g1.addEdge(g1.NameToId("John_M"),g1.NameToId("Christian"));
   g1.addEdge(g1.NameToId("Christian"),g1.NameToId("Admin"));
   g1.addEdge(g1.NameToId("Coral"),g1.NameToId("Admin"));
   g1.addEdge(g1.NameToId("James"),g1.NameToId("Sara"));
-  g1.addEdge(g1.NameToId("John M"),g1.NameToId("Julia"));
-  g1.addEdge(g1.NameToId("Julia"),g1.NameToId("John M"));
-  g1.addEdge(g1.NameToId("Christian"),g1.NameToId("John M"));
+  g1.addEdge(g1.NameToId("John_M"),g1.NameToId("Julia"));
+  g1.addEdge(g1.NameToId("Julia"),g1.NameToId("John_M"));
+  g1.addEdge(g1.NameToId("Christian"),g1.NameToId("John_M"));
 
-  int AdminArr[10]={1,1,1,1,1,1,1,1,1,1};
-  g1.setHumanQualitites("Admin","password",21,62.3,"computer science",0,1,AdminArr);
-  g1.setHumanQualitites("Christian","password",18,42.3,"business",0,0,AdminArr);
-  g1.setHumanQualitites("Coral","password",17,42.3,"physics",0,0,AdminArr);
-  g1.setHumanQualitites("John M","password",19,42.3,"business",0,0,AdminArr);
-  g1.setHumanQualitites("Julia","password",16,42.3,"business",1,0,AdminArr);
-  g1.setHumanQualitites("James","password",16,42.3,"business",1,0,AdminArr);
-  g1.setHumanQualitites("Sara","password",34,53.3,"business",1,0,AdminArr);
+  
+  //g1.setHumanQualitites("Admin","password",21,62.3,"computer science",0,1,AdminArr);
+  //g1.setHumanQualitites("Christian","password",18,42.3,"business",0,0,AdminArr);
+  //g1.setHumanQualitites("Coral","password",17,42.3,"physics",0,0,AdminArr);
+  //g1.setHumanQualitites("John M","password",19,42.3,"business",0,0,AdminArr);
+  //g1.setHumanQualitites("Julia","password",16,42.3,"business",1,0,AdminArr);
+  //g1.setHumanQualitites("James","password",16,42.3,"business",1,0,AdminArr);
+  //g1.setHumanQualitites("Sara","password",34,53.3,"business",1,0,AdminArr);
   //g1.displayEdges();
   cout<<endl;
+
+
+  ///////////////////////////////////////////////
+  // John_M password 19 60.5 sociology 0 1 1 2 3 4 5 4 3 2 1 2
+  // Christian password 19 69.3 business 0 1 5 4 3 2 1 2 3 4 5 4
+  // James password 18 62.5 biology 0 0 1 2 3 4 5 4 3 2 1 2
+  // Julia password 19 58.8 psychology 1 0 5 4 3 2 1 2 3 4 5 4
+  // Sara password 19 57.5 nuero-science 1 0 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+  // Admin password 21 62.3 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+  // Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
 
     //cout<<g1.AlreadyMatched(g1.NameToId("Admin"),g1.NameToId("Coral"))<<endl;
 
