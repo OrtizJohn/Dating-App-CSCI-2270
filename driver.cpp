@@ -5,6 +5,7 @@
 #include<math.h>
 #include"connectivityGraph.hpp"
 #include "PriorityQueue.hpp"
+#include<sstream>
 
 using namespace std;
 
@@ -381,7 +382,8 @@ void userInterface(ConnectivityGraph *g1,string name){
 
     }
     else if(stoi(ans) == 4){
-
+      cout << "Running Messages" << endl;
+      CheckMessages(g1, name);
 		}
     else if(stoi(ans) == 5){
       cout << "Logging out..." << endl;
@@ -601,10 +603,7 @@ int main(int argc, const char *argv[])
       go = false;
 
     }
-    else if(stoi(ans)==4){
-          cout << "Running Messages" << endl;
-          CheckMessages(&g1, "Admin");
-        }
+
 
 
   }
