@@ -1,1 +1,15 @@
-Admin password 21 62.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+Admin password 19 72.3 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+Coral password 19 65.0 physics 1 0 5 4 3 2 1 2 3 4 5 4
+John_M password 19 60.5 sociology 0 1 1 2 3 4 5 4 3 2 1 2
+Christian password 19 69.3 business 0 1 5 4 3 2 1 2 3 4 5 4
+James password 18 62.5 biology 0 0 1 2 3 4 5 4 3 2 1 2
+Julia password 19 58.8 psychology 1 0 5 4 3 2 1 2 3 4 5 4
+Sara password 19 57.5 nuero-science 1 0 1 2 3 4 5 4 3 2 1 2
+Chad password 21 55 computer-science 0 1 5 4 3 2 1 2 3 4 5 4
+Danielle password 20 52.9 sociology 1 0 1 2 3 4 5 4 3 2 1 2
+Edison password 18 58.2 economics 0 1 5 4 3 2 1 2 3 4 5 4
+Barry password 22 66.4 computer-science 0 1 1 2 3 4 5 4 3 2 1 2
+Sean password 23 65.3 criminal-justice 0 1 5 4 3 2 1 2 3 4 5 4
+Juliet password 23 63.3 criminal-justice 1 0 1 2 3 4 5 4 3 2 1 2
+Joe password 19 70 business 0 1 5 4 3 2 1 2 3 4 5 4
+Zoey password 19 63.6 business 1 0 1 2 3 4 5 4 3 2 1 2
