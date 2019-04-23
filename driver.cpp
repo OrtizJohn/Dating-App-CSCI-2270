@@ -8,7 +8,7 @@
 #include<sstream>
 
 using namespace std;
-
+//
 void CheckMessages(ConnectivityGraph *g1,string name){
       PersonVertex *temp = g1->findVertex(g1->NameToId(name)); //obtains a variable that uses the current user's data
       vector<int> list; //list of matches with indexes of people matched with the current user
