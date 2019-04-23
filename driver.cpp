@@ -273,6 +273,59 @@ int main(int argc, const char *argv[])
 
 
   ConnectivityGraph g1;
+  ifstream inFile("SimulationPeople.txt");
+  if(inFile.fail()){
+    std::cout<< "Failed to open the file." <<std::endl;
+
+  }
+  else{
+    string line ="";
+    int check = 0;
+    while(getline(inFile,line)){
+      stringstream  linestream(line);
+      string name;
+      string password;
+      string age1;
+      int age;
+      string height1;
+      float height;
+      string major;
+      string gender1;
+      string sexualOrientation1;
+      bool gender;
+      bool sexualOrientation;
+      string q11,q22,q33,q44,q55,q66,q77,q88,q99,q1010;
+      int q1,q2,q3,q4,q5,q6,q7,q8,q9,q10;
+
+
+      while(linestream >> name>>password>>age1>>height1>>major>>gender1>>sexualOrientation1>>q11>>q22>>q33>>q44>>q55>>q66>>q77>>q88>>q99>>q1010){
+        g1.addVertex(name);
+        age= stoi(age1);
+        height = stof(height1);
+        if(gender1 == "0") gender = 0;
+        else if(gender1 == "1") gender = 1;
+        if(sexualOrientation1 == "0") sexualOrientation = 0;
+        else if(sexualOrientation1 == "1") sexualOrientation= 1;
+        cout<< age<< " years old, " <<height <<" inches tall, " << " taking " <<major << "you are a " <<gender<< "you are attracted to " <<sexualOrientation<<endl;
+
+
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ////////////////////////////////////////////
   g1.addVertex("Coral");
   g1.addVertex("John M");
   g1.addVertex("Christian");
