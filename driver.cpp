@@ -50,16 +50,26 @@ void CheckMessages(ConnectivityGraph *g1,string name){
           //cout << "3) Unmatch with " << input << endl;
           cout << "4) Quit" << endl;
           getline(cin, choice);
+          bool factor;
+          for(int i = 0; i< temp->messages[g1->NameToId(input)].size() ;i++)
+          {
+            if(temp->messages[g1->NameToId(input)][i] != "")
+            {
+              factor = true;
+            }
+          }
+          factor = false;
           switch(stoi(choice))
           {
             case 1:
             {
               string message;
-
+              PersonVertex *target = g1->findVertex(g1->NameToId(input));
               //they have talked yet to determine who has messaged first
-              if(temp->messages[g1->NameToId(input)].empty()) //if you have messaged messaged First
+              if(factor) //if you have messaged messaged First
               {
                 temp->messagedFirst[g1->NameToId(input)] = true;
+                target->messagedFirst[g1->NameToId(name)] = false;
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)][0] = message;
@@ -69,11 +79,13 @@ void CheckMessages(ConnectivityGraph *g1,string name){
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)].push_back(message);
+                target->messages[g1->NameToId(name)].push_back(message);
               }
+              break;
             }
             case 2:
             {
-              if(temp->messages.empty()) //who messaged first to figure out algorithm to output
+              if(factor) //who messaged first to figure out algorithm to output
               {
                 cout << "No messages between you and " << input << endl;
               }
@@ -83,18 +95,25 @@ void CheckMessages(ConnectivityGraph *g1,string name){
                 {
                   for(int i = 0; i < temp->messages[g1->NameToId(input)].size(); i++)
                   {
-                    cout << "You: " << temp->messages[g1->NameToId(input)][i] << endl << endl;
-                    cout << input << ": ";
-                    cout << temp->messages[g1->NameToId(input)][i+1] << endl << endl;
+                    if(temp->messages[g1->NameToId(input)][i] != "" || temp->messages[g1->NameToId(input)][i+1] != "")
+                    {
+                      cout << "You: " << temp->messages[g1->NameToId(input)][i] << endl << endl;
+                      cout << input << ": ";
+                      cout << temp->messages[g1->NameToId(input)][i+1] << endl << endl;
+                    }
+
                   }
                 }
                 else //targeted person has sent first message
                 {
                   for(int i = 0; i < temp->messages[g1->NameToId(input)].size(); i++)
                   {
-                    cout << input << ": ";
-                    cout << temp->messages[g1->NameToId(input)][i] << endl << endl;
-                    cout << "You: " << temp->messages[g1->NameToId(input)][i+1] << endl << endl;
+                    if(temp->messages[g1->NameToId(input)][i+1] != "" || temp->messages[g1->NameToId(input)][i] != "")
+                    {
+                      cout << input << ": ";
+                      cout << temp->messages[g1->NameToId(input)][i] << endl << endl;
+                      cout << "You: " << temp->messages[g1->NameToId(input)][i+1] << endl << endl;
+                    }
                   }
                 }
               }
