@@ -161,15 +161,15 @@ void ConnectivityGraph::printHumanQualities(string name){
   else if(!temp->h1.getSexualOrientation()) cout<<"Sexually attracted to: Males"<<endl;
   cout<<"For the following questions you answered on a scale of 1(strongly disagree) to 5(strongly agree)..."<<endl;
   cout<<"You are very active. Answered: " <<questionAnswers[0]<<endl;
-  cout<<"You are very organized."<<questionAnswers[1]<<endl;
-  cout<<"On a Friday Night, you would rather stay in and watch Netflix than go out and party."<<questionAnswers[2]<<endl;
-  cout<<"You love all types of sports."<<questionAnswers[3]<<endl;
-  cout<<"You are a nightowl."<<questionAnswers[4]<<endl;
-  cout<<"You are looking for a long term relationship."<<questionAnswers[5]<<endl;
-  cout<<"You are a good communicator."<<questionAnswers[6]<<endl;
-  cout<<"You like to be the center of attention."<<questionAnswers[7]<<endl;
-  cout<<"You are open to new ideas."<<questionAnswers[8]<<endl;
-  cout<<"There is nothing better in a partner than the ability to make you laugh."<<questionAnswers[9]<<endl;
+  cout<<"You are very organized. Answered: "<<questionAnswers[1]<<endl;
+  cout<<"On a Friday Night, you would rather stay in and watch Netflix than go out and party. Answered: "<<questionAnswers[2]<<endl;
+  cout<<"You love all types of sports. Answered: "<<questionAnswers[3]<<endl;
+  cout<<"You are a nightowl. Answered: "<<questionAnswers[4]<<endl;
+  cout<<"You are looking for a long term relationship. Answered: "<<questionAnswers[5]<<endl;
+  cout<<"You are a good communicator. Answered: "<<questionAnswers[6]<<endl;
+  cout<<"You like to be the center of attention. Answered: "<<questionAnswers[7]<<endl;
+  cout<<"You are open to new ideas. Answered: "<<questionAnswers[8]<<endl;
+  cout<<"There is nothing better in a partner than the ability to make you laugh. Answered: "<<questionAnswers[9]<<endl;
 
 }
 bool ConnectivityGraph::isInGraph(string name){

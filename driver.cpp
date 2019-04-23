@@ -13,7 +13,19 @@ void CheckMessages(ConnectivityGraph *g1,string name){
       PersonVertex *temp = g1->findVertex(g1->NameToId(name)); //obtains a variable that uses the current user's data
       vector<int> list; //list of matches with indexes of people matched with the current user
       //obtains the list of matched indexes
-      g1->Matches(temp->id);
+      for(int i = 0; i< g1->getCurrentAmtOfNames(); i++)
+      {
+        if(g1->swipedBack(temp->id, i) &&  i != temp->id)
+        {
+          list.push_back(i); //gets indexes of people who's matched with
+        }
+      }
+
+      //outputs matched list
+      for(int i = 0; i < list.size();i++)
+      {
+        cout << "You've matched with " << g1->IdToName(i) << endl;
+      }
 
       //determines who is matched with who
       string input;
@@ -54,18 +66,20 @@ void CheckMessages(ConnectivityGraph *g1,string name){
           {
             case 1:
             {
+              cout << "I'm in if" << endl;
               string message;
-
               //they have talked yet to determine who has messaged first
               if(temp->messages[g1->NameToId(input)].empty()) //if you have messaged messaged First
               {
-                temp->messagedFirst[g1->NameToId(input)] = true;
+                cout << "I'm in" << endl;
+                temp->messagedFirst.at(g1->NameToId(input)) = true;
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)][0] = message;
               }
               else
               {
+                cout << "I'm in if" << endl;
                 cout << "Enter your message: " << endl;
                 getline(cin, message);
                 temp->messages[g1->NameToId(input)].push_back(message);
@@ -312,15 +326,15 @@ void userInterface(ConnectivityGraph *g1,string name){
 
 
         PersonVertex *temp = g1->findVertex(g1->NameToId(name));
-        cout<< "current amt of names" <<g1->getCurrentAmtOfNames()<<endl;
+        //cout<< "current amt of names" <<g1->getCurrentAmtOfNames()<<endl;
         Queue *q1 = new Queue(g1->getCurrentAmtOfNames(),*temp);
 
         for(int i =0; i<g1->getCurrentAmtOfNames();i++){
-          cout<<"index: "<<i<<", index of User: " <<g1->NameToId(name)<<endl;
+          //cout<<"index: "<<i<<", index of User: " <<g1->NameToId(name)<<endl;
           if((i!= g1->NameToId(name)) && (!g1->swipedBack(i,g1->NameToId(name)))){ //write an and statement to check if already matched with a person
-            cout<<"hi"<<endl;
+            //cout<<"hi"<<endl;
             PersonVertex *comparingUser = g1->findVertex(i);
-            cout<<"adding " <<g1->IdToName(i)<<endl;
+            //cout<<"adding " <<g1->IdToName(i)<<endl;
             cout<< g1->IdToName(comparingUser->id)<<endl;
             q1->enqueue(*comparingUser);
 
