@@ -7,13 +7,13 @@ using namespace std;
 
  int main()
  {
-   sting name = "Mark";
+   string name = "Mark";
    ConnectivityGraph g1;
    PersonVertex *temp = g1.findVertex(g1.NameToId(name)); //obtains a variable that uses the current user's data
    vector<int> list; //list of matches with indexes of people matched with the current user
 
    //obtains the list of matched indexes
-   for(int i = 0; g1->getCurrentAmtOfNames(); i++)
+   for(int i = 0; g1.getCurrentAmtOfNames(); i++)
    {
      if(g1.swipedBack(temp->id, i))
      {
@@ -68,45 +68,44 @@ using namespace std;
          {
            string message;
            //they have talked yet to determine who has messaged first
-           if(*ptrG1.messages.empty()) //if you have messaged messaged First
+           if(temp->messages.empty()) //if you have messaged messaged First
            {
-             *ptrG1.messagedFirst.at(*ptrG1.NameToId(input)) = true;
+             temp->messagedFirst.at(g1.NameToId(input)) = true;
              cout << "Enter your message: " << endl;
              getline(cin, message);
-             *ptrG1.messages[*ptrG1.NameToId(input)][0] = message;
+             temp->messages[g1.NameToId(input)][0] = message;
            }
            else
            {
              cout << "Enter your message: " << endl;
              getline(cin, message);
-             *ptrG1.messages[*ptrG1.NameToId(input)].push_back(message);
+             temp->messages[g1.NameToId(input)].push_back(message);
            }
          }
          case 2:
          {
-           if(*ptrG1.messages.empty()) //who messaged first to figure out algorithm to output
+           if(temp->messages.empty()) //who messaged first to figure out algorithm to output
            {
              cout << "No messages between you and " << input << endl;
            }
            else //there are messages between the user and targeted person
            {
-             if(*ptrG1.messagedFirst.at(*ptrG1.NameToId(input))) //user send first message
+             if(temp->messagedFirst.at(g1.NameToId(input))) //user send first message
              {
-               for(int i = 0; i < *ptrG1.messages[*ptrG1.NameToId(input)].size(); i++)
+               for(int i = 0; i < temp->messages[g1.NameToId(input)].size(); i++)
                {
-                 cout << "You: " << *ptrG1.messages[*ptrG1.NameToId(input)][i] << endl << endl;
+                 cout << "You: " << temp->messages[g1.NameToId(input)][i] << endl << endl;
                  cout << input << ": ";
-                 cout << *ptrG1.messages[*ptrG1.NameToId(input)][i+1] << endl << endl;
-
+                 cout << temp->messages[g1.NameToId(input)][i+1] << endl << endl;
                }
              }
              else //targeted person has sent first message
              {
-               for(int i = 0; i < *ptrG1.messages[*ptrG1.NameToId(input)].size(); i++)
+               for(int i = 0; i < temp->messages[g1.NameToId(input)].size(); i++)
                {
                  cout << input << ": ";
-                 cout << *ptrG1.messages[*ptrG1.NameToId(input)][i] << endl << endl;
-                 cout << "You: " << *ptrG1.messages[*ptrG1.NameToId(input)][i+1] << endl << endl;
+                 cout << temp->messages[g1.NameToId(input)][i] << endl << endl;
+                 cout << "You: " << temp->messages[g1.NameToId(input)][i+1] << endl << endl;
                }
              }
            }
