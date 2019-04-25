@@ -142,19 +142,19 @@ void Queue::repairDownwards(int nodeIndex)
   }
   else if(findDiff(queue[leftChild].h1,pMain.h1) == findDiff(pMain.h1,queue[nodeIndex].h1))
   {
-    if(sameMajor(queue[nodeIndex], pMain))
+    if(sameMajor(queue[leftChild], pMain))
     {
       smallest = leftChild;
     }
     else
     {
-      if(ageRange(queue[nodeIndex], pMain))
+      if(ageRange(queue[leftChild], pMain))
       {
         smallest = leftChild;
       }
       else
       {
-        if(heightRange(queue[nodeIndex], pMain))
+        if(heightRange(queue[leftChild], pMain))
         {
           smallest = leftChild;
         }
@@ -167,19 +167,19 @@ void Queue::repairDownwards(int nodeIndex)
   }
   else if(findDiff(queue[rightChild].h1,pMain.h1) == findDiff(pMain.h1,queue[nodeIndex].h1))
   {
-    if(sameMajor(queue[nodeIndex], pMain))
+    if(sameMajor(queue[rightChild], pMain))
     {
       smallest = rightChild;
     }
     else
     {
-      if(ageRange(queue[nodeIndex], pMain))
+      if(ageRange(queue[rightChild], pMain))
       {
         smallest = rightChild;
       }
       else
       {
-        if(heightRange(queue[nodeIndex], pMain))
+        if(heightRange(queue[rightChild], pMain))
         {
           smallest = rightChild;
         }
