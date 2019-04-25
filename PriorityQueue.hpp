@@ -15,6 +15,8 @@ public:
   PersonVertex peek();
   bool isFull();
   bool isEmpty();
+  void printMaxSize();
+  void printCurrentSize();
 
 private:
   void repairUpwards(int nodeIndex);

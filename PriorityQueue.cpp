@@ -124,9 +124,20 @@ void Queue::enqueue(PersonVertex p2)
     //check if person 1 is into person 2's gender and person 2 is into person 1's gender
     if((pMain.h1.getSexualOrientation() == p2.h1.getGender()) && (p2.h1.getSexualOrientation() == pMain.h1.getGender()))
     {
-      queue[currentSize] = p2;
-      currentSize++;
-      repairUpwards(currentSize);
+      if(currentSize<maxSize){
+        queue[currentSize] = p2;
+        currentSize++;
+        repairUpwards(currentSize);
+      }
+      else{
+        cout<<"size out of bounds..."<<endl;
+      }
+      // queue[currentSize] = p2;
+      // currentSize++;
+      // repairUpwards(currentSize);
+    }
+    else{
+      cout<<"Sorry they are not your type..."<<endl;
     }
   }
 }
@@ -206,6 +217,7 @@ void Queue::dequeue()
   }
   else
   {
+    //cout<<"current size -1 " <<currentSize -1<<endl;
     queue[0] = queue[currentSize-1];
     currentSize--;
     repairDownwards(-1);
@@ -241,4 +253,12 @@ bool Queue::isEmpty()
     return true;
   }
   return false;
+}
+
+void Queue::printMaxSize(){
+  cout<< maxSize<<endl;
+
+}
+void Queue::printCurrentSize(){
+  cout<< currentSize<<endl;
 }

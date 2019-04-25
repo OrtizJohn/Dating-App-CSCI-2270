@@ -319,15 +319,29 @@ void userInterface(ConnectivityGraph *g1,string name){
         PersonVertex *temp = g1->findVertex(g1->NameToId(name));
         //cout<< "current amt of names" <<g1->getCurrentAmtOfNames()<<endl;
         Queue *q1 = new Queue(g1->getCurrentAmtOfNames(),*temp);
-
+        //failed attempt to find bug
+        // cout<<"max queue amt: ";
+        // q1->printMaxSize();
+        // cout<<endl;
+        // cout<<"current queue amt: ";
+        // q1->printCurrentSize();
+        // cout<<endl;
         for(int i =0; i<g1->getCurrentAmtOfNames();i++){
           //cout<<"index: "<<i<<", index of User: " <<g1->NameToId(name)<<endl;
           if((i!= g1->NameToId(name)) && (!g1->swipedBack(i,g1->NameToId(name)))){ //write an and statement to check if already matched with a person
             //cout<<"hi"<<endl;
             PersonVertex *comparingUser = g1->findVertex(i);
             //cout<<"adding " <<g1->IdToName(i)<<endl;
-            cout<< g1->IdToName(comparingUser->id)<<endl;
-            q1->enqueue(*comparingUser);
+            //cout<< g1->IdToName(comparingUser->id)<<endl;
+            if(g1->isInGraph(g1->IdToName(comparingUser->id))){
+              // cout<<endl;
+              cout<< g1->IdToName(comparingUser->id)<<endl;
+              q1->enqueue(*comparingUser);
+              // cout<<"current queue amt: ";
+              // q1->printCurrentSize();
+              // cout<<endl;
+            }
+
 
 
           }
