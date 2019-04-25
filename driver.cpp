@@ -41,13 +41,13 @@ void CheckMessages(ConnectivityGraph *g1,string name){
       {
         int index = g1->NameToId(input);
         string choice = "1";
-        while(stoi(choice) != 4)
+        while(stoi(choice) != 3)
         {
           cout << "Select an option: " << endl;
           cout << "1) Send a message to " << input << endl;
           cout << "2) See messages with " << input << endl;
           //cout << "3) Unmatch with " << input << endl;
-          cout << "4) Quit" << endl;
+          cout << "3) Quit" << endl;
           getline(cin, choice);
           bool factor;
           for(int i = 0; i< temp->messages[g1->NameToId(input)].size() ;i++)
@@ -108,14 +108,12 @@ void CheckMessages(ConnectivityGraph *g1,string name){
             }
             case 3:
             {
-              //remove edge from current user to user targeted
-            }
-            case 4:
-            {
               //return to main menu
               cout << "Going back to the menu" << endl;
               break;
+              //remove edge from current user to user targeted
             }
+
             default:
             {
               cout << "That is not an option. Please select a valid option" << endl;
