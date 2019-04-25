@@ -367,6 +367,7 @@ void userInterface(ConnectivityGraph *g1,string name){
           if(q1->isEmpty()){
             //cout<<"There is no potential matches for you, you might want to consider updating your profile..."<<endl;
             continue1=false;
+            delete q1;
           }else{
             string matchAnswer;
             string continueLookingAtQueue;
@@ -397,6 +398,7 @@ void userInterface(ConnectivityGraph *g1,string name){
             else if(continueLookingAtQueue == "no"){
               cout<<"Ok you will be brought back to the menu screen."<<endl;
               continue1=false;
+              delete q1;
             }
           }
 
