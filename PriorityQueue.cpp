@@ -81,21 +81,21 @@ void Queue::repairUpwards(int nodeIndex)
   }
   else if(findDiff(queue[parentIndex].h1,pMain.h1) == findDiff(pMain.h1,queue[nodeIndex].h1))
   {
-    if(sameMajor(queue[nodeIndex], pMain))
+    if(sameMajor(queue[parentIndex], pMain))
     {
       swap(&queue[parentIndex], &queue[nodeIndex]);
       repairUpwards(parentIndex);
     }
     else
     {
-      if(ageRange(queue[nodeIndex], pMain))
+      if(ageRange(queue[parentIndex], pMain))
       {
         swap(&queue[parentIndex], &queue[nodeIndex]);
         repairUpwards(parentIndex);
       }
       else
       {
-        if(heightRange(queue[nodeIndex], pMain))
+        if(heightRange(queue[parentIndex], pMain))
         {
           swap(&queue[parentIndex], &queue[nodeIndex]);
           repairUpwards(parentIndex);
