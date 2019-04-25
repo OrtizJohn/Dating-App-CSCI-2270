@@ -69,9 +69,10 @@ void CheckMessages(ConnectivityGraph *g1,string name){
       cout << "Select an option: " << endl;
       cout << "1) Send a message to " << input << endl;
       cout << "2) See messages with " << input << endl;
-      cout << "3) Unmatch with " << input << endl;
+      //cout << "3) Unmatch with " << input << endl;
       cout << "4) Quit" << endl;
       getline(cin, choice);
+      PersonVertex *talkingTo = g1->findVertex(g1->NameToId())
       switch(stoi(choice))
       {
         case 1:
@@ -83,7 +84,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
             temp->messagedFirst.at(g1->NameToId(input)) = true;
             cout << "Enter your message: " << endl;
             getline(cin, message);
-            temp->messages[g1->NameToId(input)][0] = message;
+            temp->messages[g1->NameToId(input)].push_back(message);
           }
           else
           {
@@ -123,6 +124,7 @@ void CheckMessages(ConnectivityGraph *g1,string name){
         case 3:
         {
           //remove edge from current user to user targeted
+          break;
         }
         case 4:
         {
